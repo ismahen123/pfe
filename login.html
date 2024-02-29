@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome To Akwel</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="login.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form action="login.php" method="POST">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="login.php" method="POST">
+					
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="text" name="txt" placeholder="Family name" required="">
+					
+					<select name="poste">
+					<option value=""disabled selected>Choose your post</option>
+     	           <option value="Directeur g\u00E9n\u00E9ral">Directeur général</option>
+     	            <option value="Responsable groupe technique" >Responsable groupe technique</option>
+     	            <option value="Chef d'équipe" >Chef d'équipe</option>
+     	            <option value="Technicien" >Technicien</option>
+     	            </select>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="text" name="id" placeholder="CIN" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password" name="pswd" placeholder="Confirm your password" required="">
+					<button>Sign up</button>
+				</form>
+			</div>
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.querySelector('.login form');
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêcher l'envoi du formulaire par défaut
+
+        const formData = new FormData(loginForm);
+
+        fetch('login.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Afficher la réponse ou effectuer une action en fonction de la réponse du serveur
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
+    });
+});
+	</script>
+	
+</body>
+</html>
